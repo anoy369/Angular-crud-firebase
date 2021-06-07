@@ -10,10 +10,18 @@ export class CrudService {
 
   employees: Observable<any[]>;
 
-  constructor(public fireservice: AngularFirestore) {}
+  constructor(public fireservice: AngularFirestore) {
+  this.fireservice.collection('Employee').get()
+      .subscribe((snapshot) => {
+        snapshot.forEach(doc => {
+          console.log(doc.id, '=>', doc.data());
+        });
+      });
+  }
 
   createEmployee(employee: Employee): any{
-    return this.fireservice.collection('Employee').add(employee);
+    employee.id = this.fireservice.createId();
+    return this.fireservice.collection('Employee').doc(employee.id).set(employee);
   }
 
   getEmployees(): any{

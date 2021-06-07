@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import {FormsModule} from '@angular/forms';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 
@@ -17,7 +18,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class EmployeeModule { }

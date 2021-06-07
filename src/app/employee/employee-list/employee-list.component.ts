@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CrudService} from '../../sevices/crud.service';
-import {Employee} from '../../interfaces/employee';
+import { CrudService } from '../../sevices/crud.service';
+import { Employee } from '../../interfaces/employee';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,6 +11,8 @@ import {Employee} from '../../interfaces/employee';
 export class EmployeeListComponent implements OnInit {
 
   employees: Employee[];
+  editIcon = faPencilAlt;
+  deleteIcon = faTrashAlt;
 
   constructor(private crudService: CrudService) {}
 
@@ -18,6 +21,6 @@ export class EmployeeListComponent implements OnInit {
       console.log(employees);
       this.employees = employees;
     });
-  }
+  };
 
 }

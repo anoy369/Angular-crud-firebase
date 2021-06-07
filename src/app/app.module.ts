@@ -10,6 +10,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EmployeeModule } from './employee/employee.module';
 import { CrudService } from './sevices/crud.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CrudService } from './sevices/crud.service';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     EmployeeModule,
+    FontAwesomeModule
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]
