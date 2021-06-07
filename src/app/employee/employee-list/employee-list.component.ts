@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CrudService} from '../../sevices/crud.service';
+import {Employee} from '../../interfaces/employee';
 
 @Component({
   selector: 'app-employee-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor() {}
+  employees: Employee[];
+
+  constructor(private crudService: CrudService) {}
 
   ngOnInit(): void {
+    this.crudService.getEmployees().subscribe( employees => {
+      console.log(employees);
+      this.employees = employees;
+    });
   }
 
 }

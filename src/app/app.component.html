@@ -14,5 +14,18 @@
     </div>
   </div>
 </nav>
-<app-add-employee></app-add-employee>
+<div class="container pt-xl-5">
+  <div class="Employee">
+    <h2 class="text-uppercase text-center">Employee</h2>
+  </div>
+  <div class="pt-xl-3 d-flex justify-content-between">
+    <button (click)="newEmployee()" class="btn bg-primary">Add Employee</button>
+    <button class="btn bg-primary">Employee List</button>
+  </div>
+  <div class="row pt-xl-3">
+    <app-add-employee *ngIf="isShow == true"></app-add-employee>
+  </div>
+  <div class="row pt-xl-3">
+    <app-employee-list></app-employee-list>
+  </div>
 <router-outlet></router-outlet>

@@ -14,7 +14,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeAddress: string;
   message: string;
 
-  constructor(public crudService: CrudService){
+  constructor(private crudService: CrudService){
 
   }
 

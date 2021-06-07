@@ -1,46 +1,24 @@
-<div class="employeeList">
-  <div class="card mb-2">
-    <div class="card-header d-flex justify-content-between">
-      <div>
-        <h3 class="m-0">Name</h3>
+<div *ngIf="employees" class="employeeList row">
+  <div *ngFor="let employee of employees" class="col-md-4 mb-4">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div>
+          <h3 class="m-0">{{employee.name}}</h3>
+        </div>
+        <div class="d-flex">
+          <h6 class="m-0">Age: </h6><span>{{employee.age}}</span>
+        </div>
       </div>
-      <div class="d-flex">
-        <h6 class="m-0">Age: </h6><span>29</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <div>
-        Address: asdasdsadsadas
-      </div>
-    </div>
-  </div>
-  <div class="card mb-2">
-    <div class="card-header d-flex justify-content-between">
-      <div>
-        <h3 class="m-0">Name</h3>
-      </div>
-      <div class="d-flex">
-        <h6 class="m-0">Age: </h6><p>29</p>
-      </div>
-    </div>
-    <div class="card-body">
-      <div>
-        Address: asdasdsadsadas
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header d-flex justify-content-between">
-      <div>
-        <h3 class="m-0">Name</h3>
-      </div>
-      <div class="d-flex">
-        <h6 class="m-0">Age: </h6><span>29</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <div>
-        Address: asdasdsadsadas
+      <div class="card-body">
+        <div class="employeeAddress">
+          Address: {{employee.address}}
+        </div>
+        <div class="employeeEmail">
+          Email:
+        </div>
+        <div class="emplyeeSocialLink">
+          Social Link:
+        </div>
       </div>
     </div>
   </div>

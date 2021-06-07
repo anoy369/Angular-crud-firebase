@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EmployeeModule } from './employee/employee.module';
+import { CrudService } from './sevices/crud.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { EmployeeModule } from './employee/employee.module';
     AngularFireDatabaseModule,
     EmployeeModule,
   ],
-  providers: [],
+  providers: [CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

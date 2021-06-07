@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular-crud-firebase';
+
+  isShow = false;
+
+  newEmployee(): void {
+    this.isShow = !this.isShow;
+  }
+
 }
