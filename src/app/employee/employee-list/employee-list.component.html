@@ -20,7 +20,7 @@
           Social Link:
         </div>
         <div class="editEmployeeInfo d-flex flex-row-reverse">
-          <fa-icon class="text-muted" [icon]="deleteIcon"></fa-icon>
+          <fa-icon (click)="onDelete($event, employee)" class="text-muted" [icon]="deleteIcon"></fa-icon>
           <fa-icon class="text-muted" [icon]="editIcon"></fa-icon>
         </div>
       </div>

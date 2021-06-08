@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Employee } from '../interfaces/employee';
 import {Observable} from 'rxjs';
 
@@ -9,13 +9,12 @@ import {Observable} from 'rxjs';
 export class CrudService {
 
   employees: Observable<any[]>;
+  employeeDoc: AngularFirestoreDocument<Employee>;
 
   constructor(public fireservice: AngularFirestore) {
   this.fireservice.collection('Employee').get()
       .subscribe((snapshot) => {
-        snapshot.forEach(doc => {
-          console.log(doc.id, '=>', doc.data());
-        });
+        snapshot.forEach(doc => {});
       });
   }
 
@@ -25,7 +24,16 @@ export class CrudService {
   }
 
   getEmployees(): any{
-    this.employees = this.fireservice.collection('Employee').valueChanges();
+    this.employees = this.fireservice
+      .collection('Employee', ref => ref.orderBy('name', 'asc')).valueChanges();
     return this.employees;
   }
+
+  deleteEmployee(employee: Employee): any {
+    this.employeeDoc = this.fireservice.doc(`Employee/${employee.id}`);
+    return this.employeeDoc.delete();
+  }
+
+
+
 }

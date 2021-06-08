@@ -23,4 +23,9 @@ export class EmployeeListComponent implements OnInit {
     });
   };
 
+  onDelete($event: MouseEvent, employee: Employee): void {
+    this.crudService.deleteEmployee(employee);
+
+    console.log(employee.id);
+  }
 }
