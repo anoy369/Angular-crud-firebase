@@ -1,5 +1,4 @@
-<script src="../../sevices/crud.service.ts"></script>
-<div class="card addEmployee p-5">
+<div (click)="message = false" class="card addEmployee p-5">
   <div class="employeeForm">
       <div class="form-group mb-2">
         <label class="small m-0 text-muted" >Employee Name</label>
@@ -29,14 +28,18 @@
         <label class="small m-0 text-muted" >Employee Linkedin Profile</label>
         <input type="url" class="form-control" [(ngModel)]="employeeLinkedin">
       </div>
-      <div class="form-group">
+      <div class="form-group d-flex">
         <button (click)="addEmployee()" class="btn btn-success"
-        [disabled]="!employeeName || !employeeDesignation || !employeeAddress || !employeeEmail || !employeePhone">Add Employee</button>
+        [disabled]="!employeeName || !employeeDesignation || !employeeAddress || !employeeEmail || !employeePhone">
+          Add Employee
+        </button>
+        <div *ngIf="message == true" class="successMessage d-flex align-items-center justify-content-between p-1">
+          <p class="m-0">
+            Employee added successfully
+          </p>
+        </div>
       </div>
       <div class="form-group">
-        <div *ngIf="message != null" class="card successMessage text-center bg-success p-5">
-          <p class="text-white">{{message}}</p>
-        </div>
       </div>
     </div>
 </div>
