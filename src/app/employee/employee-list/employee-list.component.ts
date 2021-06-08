@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../sevices/crud.service';
 import { Employee } from '../../interfaces/employee';
-import { faCompressAlt, faPencilAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCompressAlt, faEnvelope, faMapMarkedAlt, faPencilAlt, faPhoneAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-list',
@@ -14,6 +14,9 @@ export class EmployeeListComponent implements OnInit {
   editIcon = faPencilAlt;
   collapsIcon = faCompressAlt;
   deleteIcon = faTrashAlt;
+  mapIcon = faMapMarkedAlt;
+  emailIcon = faEnvelope;
+  phoneIcon = faPhoneAlt;
   editState = false;
   employeeToEdit: Employee;
 

@@ -10,17 +10,25 @@
         </div>
       </div>
       <div class="card-body">
-        <div class="employeeAddress">
-          Address: {{employee.address}}
+        <div class="col-md-8">
+          <div class="employeeAddress">
+            <fa-icon [icon]="mapIcon" class="mr-1"></fa-icon> {{employee.address}}
+          </div>
+          <div class="employeeEmail">
+            <fa-icon [icon]="emailIcon" class="mr-1"></fa-icon> {{employee.email}}
+          </div>
+          <div class="employeePhone">
+            <fa-icon [icon]="phoneIcon" class="mr-1"></fa-icon> {{employee.phone}}
+          </div>
+          <div class="emplyeeSocialLink">
+            <a href="{{employee.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+          </div>
         </div>
-        <div class="employeeEmail">
-          Email: {{employee.email}}
+        <div class="col-md-4">
+          <div class="employeeImage">
+
+          </div>
         </div>
-        <div class="emplyeeSocialLink">
-          <a href="{{employee.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
-        </div>
-        <hr *ngIf="editState == true" [ngClass]="editState && employeeToEdit.id == employee.id ? '' : 'd-none'"
-            class="blue">
         <div class="editEmployeeInfo d-flex flex-row-reverse">
           <fa-icon (click)="onDelete($event, employee)"
                    [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
@@ -30,6 +38,8 @@
                    [icon]="editIcon"></fa-icon>
           <fa-icon *ngIf="editState && employeeToEdit.id == employee.id" (click)="onCollapse()" class="text-muted"  [icon]="collapsIcon"></fa-icon>
         </div>
+        <hr *ngIf="editState == true" [ngClass]="editState && employeeToEdit.id == employee.id ? '' : 'd-none'"
+            class="blue">
         <div *ngIf="editState && employeeToEdit.id == employee.id">
           <div class="updateEmployeeForm">
             <div class="form-group mb-2">
