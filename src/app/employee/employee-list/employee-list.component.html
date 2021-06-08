@@ -19,10 +19,15 @@
         <div class="emplyeeSocialLink">
           <a href="{{employee.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
         </div>
-        <hr *ngIf="editState == true" class="blue">
+        <hr *ngIf="editState == true" [ngClass]="editState && employeeToEdit.id == employee.id ? '' : 'd-none'"
+            class="blue">
         <div class="editEmployeeInfo d-flex flex-row-reverse">
-          <fa-icon *ngIf="editState == false && employee.id" (click)="onDelete($event, employee)" class="text-muted" [icon]="deleteIcon"></fa-icon>
-          <fa-icon (click)="onEdit($event, employee)" class="text-muted" [icon]="editIcon"></fa-icon>
+          <fa-icon (click)="onDelete($event, employee)"
+                   [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
+                   class="text-muted" [icon]="deleteIcon"></fa-icon>
+          <fa-icon (click)="onEdit($event, employee)" class="text-muted"
+                   [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
+                   [icon]="editIcon"></fa-icon>
           <fa-icon *ngIf="editState && employeeToEdit.id == employee.id" (click)="onCollapse()" class="text-muted"  [icon]="collapsIcon"></fa-icon>
         </div>
         <div *ngIf="editState && employeeToEdit.id == employee.id">
