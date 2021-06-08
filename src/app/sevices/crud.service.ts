@@ -34,6 +34,8 @@ export class CrudService {
     return this.employeeDoc.delete();
   }
 
-
-
+  updateEmployee(employee: Employee): any {
+    this.employeeDoc = this.fireservice.doc(`Employee/${employee.id}`);
+    return this.employeeDoc.update(employee);
+  }
 }
