@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../sevices/crud.service';
-import { DEFAULT_EMPLOYEE, Employee } from '../../interfaces/employee';
+import { DEFAULT_EMPLOYEE, Employee } from '../../interfaces/employee'
 
 @Component({
   selector: 'app-add-employee',
@@ -11,8 +11,13 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeName: string;
   employeeAge: number;
+  employeePhone: number;
+  employeeDesignation: string;
   employeeAddress: string;
+  employeeEmail: string;
+  employeeLinkedin: string;
   message: string;
+
 
   constructor(private crudService: CrudService){
 
@@ -23,7 +28,10 @@ export class AddEmployeeComponent implements OnInit {
 
     employee.name = this.employeeName;
     employee.age = this.employeeAge;
+    employee.designation = this.employeeDesignation;
     employee.address = this.employeeAddress;
+    employee.email = this.employeeEmail;
+    employee.linkedin = this.employeeLinkedin;
 
     console.log(employee);
 
@@ -31,6 +39,9 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeName = '';
       this.employeeAge = undefined;
       this.employeeAddress = '';
+      this.employeeDesignation = '';
+      this.employeeEmail = '';
+      this.employeeLinkedin = '';
 
       console.log(res);
       this.message = 'Employee data saved';

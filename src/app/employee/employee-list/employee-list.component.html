@@ -14,10 +14,10 @@
           Address: {{employee.address}}
         </div>
         <div class="employeeEmail">
-          Email:
+          Email: {{employee.email}}
         </div>
         <div class="emplyeeSocialLink">
-          Social Link:
+          <a href="{{employee.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
         </div>
         <div class="editEmployeeInfo d-flex flex-row-reverse">
           <fa-icon (click)="onDelete($event, employee)" class="text-muted" [icon]="deleteIcon"></fa-icon>
@@ -26,4 +26,8 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!employees" class="text-center">
+  <div class="spinner-grow text-secondary" role="status"></div>
+  <div>Fetching Employee...</div>
 </div>
