@@ -7,3 +7,26 @@
   opacity: 0.8;
   margin-left: 1rem;
 }
+.confirmationModal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.confirmationModal:after{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  opacity: .1;
+}
+.confirmationMessage{
+  position: absolute;
+  max-width: 35%;
+  z-index: 99;
+}

@@ -29,8 +29,8 @@
         <input type="url" class="form-control" [(ngModel)]="employeeLinkedin">
       </div>
       <div class="form-group d-flex">
-        <button (click)="addEmployee()" class="btn btn-success"
-        [disabled]="!employeeName || !employeeDesignation || !employeeAddress || !employeeEmail || !employeePhone">
+        <button (click)="onSubmit()" class="btn btn-success"
+                [disabled]="!employeeName || !employeeDesignation || !employeeAddress || !employeeEmail || !employeePhone">
           Add Employee
         </button>
         <div *ngIf="message == true" class="successMessage d-flex align-items-center justify-content-between p-1">
@@ -39,7 +39,14 @@
           </p>
         </div>
       </div>
-      <div class="form-group">
+      <div *ngIf="confirmation == true" (click)="confirmation = false;" class="confirmationModal align-middle d-flex align-items-center justify-content-center">
+        <div class="card p-5 confirmationMessage">
+          <p class="text-center">Are you sure, you want to add the employee?</p>
+          <div class="d-flex justify-content-between">
+            <button (click)="addEmployee()" class="btn btn-primary">yes</button>
+            <button (click)="confirmation = false" class="btn btn-danger">no</button>
+          </div>
+        </div>
       </div>
     </div>
 </div>

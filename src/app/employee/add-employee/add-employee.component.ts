@@ -17,6 +17,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeEmail: string;
   employeeLinkedin: string;
   message = false;
+  confirmation = false;
 
 
   constructor(private crudService: CrudService){
@@ -28,6 +29,7 @@ export class AddEmployeeComponent implements OnInit {
 
     employee.name = this.employeeName;
     employee.age = this.employeeAge;
+    employee.phone = this.employeePhone;
     employee.designation = this.employeeDesignation;
     employee.address = this.employeeAddress;
     employee.email = this.employeeEmail;
@@ -40,11 +42,13 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeAge = undefined;
       this.employeeAddress = '';
       this.employeeDesignation = '';
+      this.employeePhone = undefined;
       this.employeeEmail = '';
       this.employeeLinkedin = '';
 
       console.log(res);
       this.message = true;
+      this.confirmation = false;
 
     }).catch(error => {
       console.log(error);
@@ -55,4 +59,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void {
+    this.confirmation = true;
+  }
 }

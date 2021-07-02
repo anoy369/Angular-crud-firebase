@@ -11,6 +11,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EmployeeModule } from './employee/employee.module';
 import { CrudService } from './sevices/crud.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
+import {UserModule} from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     EmployeeModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule,
+    UserModule
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]
