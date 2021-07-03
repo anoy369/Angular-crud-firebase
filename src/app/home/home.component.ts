@@ -10,7 +10,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   isShow = false;
-  isSignedIn: any;
 
   user: any;
 
@@ -20,11 +19,8 @@ export class HomeComponent implements OnInit {
     private authService: AuthGuardService) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.isSignedIn = params;
-      console.log(this.isSignedIn);
-    });
-    this.user = localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
   }
 
   newEmployee(): void {

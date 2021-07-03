@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {EmployeeProfileComponent} from './employee/employee-profile/employee-profile.component';
 import {HomeComponent} from './home/home.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 
 @NgModule({
@@ -13,8 +13,8 @@ import {LoginComponent} from './login/login.component';
       component: HomeComponent
     },
     {
-      path: 'profile',
-      component: EmployeeProfileComponent
+      path: 'profile/:id',
+      component: ProfileComponent
     },
     {
       path: 'signIn',

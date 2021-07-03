@@ -6,15 +6,13 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
-import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
 
 
 @NgModule({
   declarations: [
     AddEmployeeComponent,
-    EmployeeListComponent,
-    EmployeeProfileComponent
+    EmployeeListComponent
   ],
   exports: [
     AddEmployeeComponent,

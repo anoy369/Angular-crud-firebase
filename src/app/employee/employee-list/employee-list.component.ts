@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../sevices/crud.service';
 import { Employee } from '../../interfaces/employee';
 import { faCompressAlt, faEnvelope, faMapMarkedAlt, faPencilAlt, faPhoneAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -24,7 +24,7 @@ export class EmployeeListComponent implements OnInit {
   user: any;
 
   constructor(private crudService: CrudService,
-              private router: Router) {}
+              private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.crudService.getEmployees().subscribe( employees => {
@@ -59,7 +59,7 @@ export class EmployeeListComponent implements OnInit {
     this.confirmation = true;
   }
 
-  goToProfile(): void {
-    this.router.navigate(['profile']);
+  goToProfile(id?: any): void {
+    this.router.navigate(['/profile', id]);
   }
 }

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import {User} from '../interfaces/users';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,37 +11,37 @@ import {Router} from '@angular/router'
 export class AuthGuardService {
 
   isLoggedIn = false;
+  user: any;
 
   constructor(
     private fireAuth: AngularFireAuth,
-    private router: Router) { }
+    private router: Router,
+    private fireStore: AngularFirestore) { }
 
-    login(email: string, password: string): void{
-      this.fireAuth.signInWithEmailAndPassword(email, password).then(value => {
-        console.log('You are logged in');
-        this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(value.user));
-
-        const data: boolean = this.isLoggedIn;
-        this.router.navigate([''], {
-          queryParams: {data}
-        });
-        if (this.isLoggedIn){
-          this.router.navigateByUrl('');
-        }
-      }).catch(err => {
-        console.log('Something went wrong:', err.message);
-      });
+    login(): any{
+      this.user = this.fireStore
+        .collection('users', ref => ref.orderBy('id', 'asc')).valueChanges();
+      return this.user;
+      // this.fireAuth.signInWithEmailAndPassword(email, password).then(value => {
+      //   console.log('You are logged in');
+      //   this.isLoggedIn = true;
+      //   localStorage.setItem('user', JSON.stringify(value.user));
+      //
+      //   const data: boolean = this.isLoggedIn;
+      //   this.router.navigate([''], {
+      //     queryParams: {data}
+      //   });
+      //   if (this.isLoggedIn){
+      //     this.router.navigateByUrl('');
+      //   }
+      // }).catch(err => {
+      //   console.log('Something went wrong:', err.message);
+      // });
     }
 
-    signUp(email: string, password: string): void{
-      this.fireAuth.createUserWithEmailAndPassword(email, password).then(value => {
-        this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(value.user));
-        if (this.isLoggedIn){
-          this.router.navigateByUrl('');
-        }
-      });
+    signUp(user: User): any{
+      user.id = this.fireStore.createId();
+      return this.fireStore.collection('users').doc(user.id).set(user);
     }
 
     logOut(): void{

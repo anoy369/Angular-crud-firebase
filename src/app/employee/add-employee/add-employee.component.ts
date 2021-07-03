@@ -35,8 +35,6 @@ export class AddEmployeeComponent implements OnInit {
     employee.email = this.employeeEmail;
     employee.linkedin = this.employeeLinkedin;
 
-    console.log(employee);
-
     this.crudService.createEmployee(employee).then(res => {
       this.employeeName = '';
       this.employeeAge = undefined;
