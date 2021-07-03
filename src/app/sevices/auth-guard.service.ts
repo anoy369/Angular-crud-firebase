@@ -46,7 +46,7 @@ export class AuthGuardService {
       localStorage.removeItem('user');
       this.isLoggedIn = false;
       if (this.isLoggedIn === false){
-        this.router.navigateByUrl('');
+        window.location.reload();
       }
     }
 

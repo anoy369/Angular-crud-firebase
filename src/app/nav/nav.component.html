@@ -20,10 +20,13 @@
           <a class="nav-link" [routerLink]="['/signIn']">Login</a>
         </li>
         <li *ngIf="user" class="nav-item">
-          <a (click)="onLogout()" class="nav-link">Logout</a>
+          <a (click)="onLogout()" class="nav-link" [routerLink]="['/']">Logout</a>
         </li>
         <li *ngIf="!user" class="nav-item">
           <a class="nav-link" [routerLink]="['/signUp']">SignUp</a>
+        </li>
+        <li *ngIf="user" class="nav-item userImage">
+          <img src="assets/user.png">
         </li>
       </ul>
     </div>

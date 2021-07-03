@@ -1,8 +1,9 @@
+<app-nav></app-nav>
 <div class="container pt-xl-5">
   <div class="Employee">
     <h2 class="text-uppercase text-center">Employee</h2>
   </div>
-  <div class="pt-xl-3 d-flex justify-content-between">
+  <div *ngIf="user" class="pt-xl-3 d-flex justify-content-between">
     <button *ngIf="!isShow" (click)="newEmployee()" class="btn bg-secondary text-white">
       Add Employee
       <i class="fa fa-angle-down"></i>

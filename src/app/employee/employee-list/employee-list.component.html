@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="editEmployeeInfo d-flex flex-row-reverse align-items-end p-2 pt-0">
+      <div *ngIf="user" class="editEmployeeInfo d-flex flex-row-reverse align-items-end p-2 pt-0">
         <fa-icon (click)="onClick()"
                  [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
                  class="text-muted" [icon]="deleteIcon"></fa-icon>

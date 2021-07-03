@@ -21,6 +21,7 @@ export class EmployeeListComponent implements OnInit {
   editState = false;
   employeeToEdit: Employee;
   confirmation = false;
+  user: any;
 
   constructor(private crudService: CrudService,
               private router: Router) {}
@@ -30,6 +31,7 @@ export class EmployeeListComponent implements OnInit {
       console.log(employees);
       this.employees = employees;
     });
+    this.user = localStorage.getItem('user');
   }
 
   onDelete($event: MouseEvent, employee: Employee): void {
