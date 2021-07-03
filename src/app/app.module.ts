@@ -13,10 +13,18 @@ import { CrudService } from './sevices/crud.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import {UserModule} from './user/user.module';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SignupComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

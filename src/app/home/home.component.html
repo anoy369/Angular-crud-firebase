@@ -1,0 +1,21 @@
+<div class="container pt-xl-5">
+  <div class="Employee">
+    <h2 class="text-uppercase text-center">Employee</h2>
+  </div>
+  <div class="pt-xl-3 d-flex justify-content-between">
+    <button *ngIf="!isShow" (click)="newEmployee()" class="btn bg-secondary text-white">
+      Add Employee
+      <i class="fa fa-angle-down"></i>
+    </button>
+    <button *ngIf="isShow" (click)="newEmployee()" class="btn bg-dark text-white">
+      Back
+      <i class="fa fa-angle-up"></i>
+    </button>
+  </div>
+  <div class="row pt-xl-3">
+    <app-add-employee *ngIf="isShow == true"></app-add-employee>
+  </div>
+  <div class="row pt-xl-3">
+    <app-employee-list></app-employee-list>
+  </div>
+</div>

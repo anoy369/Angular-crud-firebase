@@ -9,8 +9,11 @@
           <span>{{employee.designation}}</span>
         </div>
       </div>
-      <div class="card-body">
-        <div class="col-md-8">
+      <div class="card-body d-flex flex-wrap align-items-center justify-content-around pb-0">
+        <div class="employeeImage m-1">
+          <img src="assets/user.png">
+        </div>
+        <div class="employeeInfo">
           <div class="employeeAddress">
             <fa-icon [icon]="mapIcon" class="mr-1"></fa-icon> {{employee.address}}
           </div>
@@ -24,60 +27,55 @@
             <a href="{{employee.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="employeeImage">
-
+      </div>
+      <div class="editEmployeeInfo d-flex flex-row-reverse align-items-end p-2 pt-0">
+        <fa-icon (click)="onClick()"
+                 [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
+                 class="text-muted" [icon]="deleteIcon"></fa-icon>
+        <fa-icon (click)="onEdit($event, employee)" class="text-muted"
+                 [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
+                 [icon]="editIcon"></fa-icon>
+        <fa-icon *ngIf="editState && employeeToEdit.id == employee.id" (click)="onCollapse()"
+                 class="text-muted"  [icon]="collapseIcon"></fa-icon>
+      </div>
+      <hr *ngIf="editState == true" [ngClass]="editState && employeeToEdit.id == employee.id ? '' : 'd-none'"
+          class="blue m-0">
+      <div *ngIf="editState && employeeToEdit.id == employee.id" class="p-3">
+        <div class="updateEmployeeForm">
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Name</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.name">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Age</label>
+            <input type="number" class="form-control" [(ngModel)]="employee.age">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Designation</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.designation">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Addresss</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.address">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Email</label>
+            <input type="email" class="form-control" [(ngModel)]="employee.email">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Phone</label>
+            <input type="number" class="form-control" [(ngModel)]="employee.phone">
+          </div>
+          <div class="form-group mb-2">
+            <label class="small m-0 text-muted" >Employee Linkedin Profile</label>
+            <input type="url" class="form-control" [(ngModel)]="employee.linkedin">
+          </div>
+          <div class="form-group d-flex justify-content-between">
+            <button (click)="onUpdate($event, employee)" class="btn btn-warning">Update</button>
+            <button (click)="onDelete($event, employee)" class="btn btn-danger">Delete</button>
           </div>
         </div>
-        <div class="editEmployeeInfo d-flex flex-row-reverse">
-          <fa-icon (click)="onClick()"
-                   [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
-                   class="text-muted" [icon]="deleteIcon"></fa-icon>
-          <fa-icon (click)="onEdit($event, employee)" class="text-muted"
-                   [ngClass]="editState && employeeToEdit.id == employee.id ? 'd-none' : ''"
-                   [icon]="editIcon"></fa-icon>
-          <fa-icon *ngIf="editState && employeeToEdit.id == employee.id" (click)="onCollapse()"
-                   class="text-muted"  [icon]="collapseIcon"></fa-icon>
-        </div>
-        <hr *ngIf="editState == true" [ngClass]="editState && employeeToEdit.id == employee.id ? '' : 'd-none'"
-            class="blue">
-        <div *ngIf="editState && employeeToEdit.id == employee.id">
-          <div class="updateEmployeeForm">
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Name</label>
-              <input type="text" class="form-control" [(ngModel)]="employee.name">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Age</label>
-              <input type="number" class="form-control" [(ngModel)]="employee.age">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Designation</label>
-              <input type="text" class="form-control" [(ngModel)]="employee.designation">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Addresss</label>
-              <input type="text" class="form-control" [(ngModel)]="employee.address">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Email</label>
-              <input type="email" class="form-control" [(ngModel)]="employee.email">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Phone</label>
-              <input type="number" class="form-control" [(ngModel)]="employee.phone">
-            </div>
-            <div class="form-group mb-2">
-              <label class="small m-0 text-muted" >Employee Linkedin Profile</label>
-              <input type="url" class="form-control" [(ngModel)]="employee.linkedin">
-            </div>
-            <div class="form-group d-flex justify-content-between">
-              <button (click)="onUpdate($event, employee)" class="btn btn-warning">Update</button>
-              <button (click)="onDelete($event, employee)" class="btn btn-danger">Delete</button>
-            </div>
-          </div>
 
-        </div>
       </div>
     </div>
 

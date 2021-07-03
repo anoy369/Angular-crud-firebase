@@ -1,6 +1,12 @@
 .editEmployeeInfo fa-icon{
   margin-left: 1rem;
+
   cursor: pointer;
+}
+
+.employeeImage img {
+  width: 10em;
+  border-radius: 50%;
 }
 
 .confirmationModal{
