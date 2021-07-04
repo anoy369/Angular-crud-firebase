@@ -1,6 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {AuthGuardService} from '../sevices/auth-guard.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +11,10 @@ export class HomeComponent implements OnInit {
 
   user: any;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private authService: AuthGuardService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
   }
 
   newEmployee(): void {

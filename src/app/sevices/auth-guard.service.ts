@@ -11,32 +11,38 @@ import {Observable} from 'rxjs';
 export class AuthGuardService {
 
   isLoggedIn = false;
-  user: any;
+  users: Observable<any[]>;
+  user: User[]
 
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router,
-    private fireStore: AngularFirestore) { }
+    private fireStore: AngularFirestore) {
 
-    login(): any{
-      this.user = this.fireStore
+    this.getUser().subscribe( data => {
+      this.user = data;
+    });
+  }
+
+    getUser(): any{
+      this.users = this.fireStore
         .collection('users', ref => ref.orderBy('id', 'asc')).valueChanges();
-      return this.user;
-      // this.fireAuth.signInWithEmailAndPassword(email, password).then(value => {
-      //   console.log('You are logged in');
-      //   this.isLoggedIn = true;
-      //   localStorage.setItem('user', JSON.stringify(value.user));
-      //
-      //   const data: boolean = this.isLoggedIn;
-      //   this.router.navigate([''], {
-      //     queryParams: {data}
-      //   });
-      //   if (this.isLoggedIn){
-      //     this.router.navigateByUrl('');
-      //   }
-      // }).catch(err => {
-      //   console.log('Something went wrong:', err.message);
-      // });
+      return this.users;
+    }
+
+    login(email, password): any{
+      for (const user of this.user) {
+        if (user.email === email && user.password === password) {
+          const userRole = user.role;
+          const userId = user.id;
+          if (userRole === 'admin'){
+            localStorage.setItem('user', JSON.stringify(userRole));
+          }else{
+            localStorage.setItem('user', JSON.stringify(userId));
+          }
+        }
+      }
+      this.router.navigateByUrl('/');
     }
 
     signUp(user: User): any{

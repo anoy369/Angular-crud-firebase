@@ -12,16 +12,17 @@ import { EmployeeModule } from './employee/employee.module';
 import { CrudService } from './sevices/crud.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-import {UserModule} from './user/user.module';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
 import { NavComponent } from './nav/nav.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ProfileComponent,
     LoginComponent,
     SignupComponent,
     NavComponent
@@ -35,10 +36,12 @@ import { NavComponent } from './nav/nav.component';
     AngularFireDatabaseModule,
     EmployeeModule,
     FontAwesomeModule,
-    RouterModule,
-    UserModule
+    RouterModule
   ],
   providers: [CrudService],
+  exports: [
+    NavComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

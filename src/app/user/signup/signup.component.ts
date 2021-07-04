@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthGuardService} from '../sevices/auth-guard.service';
-import {DEFAULT_USER, User} from '../interfaces/users';
+import {AuthGuardService} from '../../sevices/auth-guard.service';
+import {DEFAULT_USER, User} from '../../interfaces/users';
 import {Router} from '@angular/router';
 
 @Component({
